@@ -22,3 +22,6 @@
 [submodule "vendor/doctrine-dbal"]
 	path = vendor/doctrine-dbal
 	url = https://github.com/doctrine/dbal.git
+[submodule "vendor/silex-doctrine-orm"]
+	path = vendor/silex-doctrine-orm
+	url = git@github.com:litek/SilexDoctrineOrm.git

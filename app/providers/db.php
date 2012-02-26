@@ -5,7 +5,7 @@ use Symfony\Component\Validator\Mapping\ClassMetadataFactory;
 use Symfony\Component\Validator\Mapping\Loader\AnnotationLoader;
 
 $app['autoloader']->registerNamespaces(array(
-    'SilexDoctrineOrm', APP_PATH.'/../vendor/silex-doctrine-orm/src'
+    'SilexDoctrineOrm' => APP_PATH.'/../vendor/silex-doctrine-orm/src'
 ));
 
 $app->register(new DoctrineOrmServiceProvider, array(

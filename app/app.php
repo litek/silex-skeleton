@@ -13,12 +13,25 @@ $app->register(new SilexPhpEngine\ViewServiceProvider, [
   'view.paths' => APP_PATH.'/views/%name%.phtml'
 ]);
 
-// dbal and validator
-$app->register(new Tabler\Provider\DbServiceProvider, [
+// dbal
+$app->register(new Tabler\Provider\TablerServiceProvider, [
   'db.options' => $app['config']['db.options'] + [
     'namespace' => 'App\\Table'
   ]
 ]);
+
+// validator
+$app->register(new Silex\Provider\ValidatorServiceProvider);
+$app['validator.mapping.class_metadata_factory'] = $app->share(function ($app) {
+  foreach (spl_autoload_functions() as $fn) {
+    Doctrine\Common\Annotations\AnnotationRegistry::registerLoader($fn);
+  }
+
+  $reader = new Doctrine\Common\Annotations\AnnotationReader;
+  $loader = new Symfony\Component\Validator\Mapping\Loader\AnnotationLoader($reader);
+  $cache  = extension_loaded('apc') ? new Symfony\Component\Validator\Mapping\ClassMetadata\ApcCache : null;
+  return new Symfony\Component\Validator\Mapping\ClassMetadataFactory($loader, $cache);
+});
 
 // translator, add validation messages
 $app->register(new Silex\Provider\TranslationServiceProvider);

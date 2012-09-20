@@ -14,7 +14,7 @@ $app->register(new SilexPhpEngine\ViewServiceProvider, [
 ]);
 
 // dbal
-$app->register(new Tabler\Provider\TablerServiceProvider, [
+$app->register(new Tabler\Provider\DbServiceProvider, [
   'db.options' => $app['config']['db.options'] + [
     'namespace' => 'App\\Table'
   ]

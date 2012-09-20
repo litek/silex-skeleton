@@ -1,3 +1,3 @@
 # SilexApp
 
-Simple application setup to get started with a web app.
+Simple application Silex application skeleton for PHP 5.4+

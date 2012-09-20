@@ -1,3 +1,3 @@
 <?php
-$loader = require_once __DIR__.'/../app/bootstrap.php';
-$loader->registerNamespace('App\\Tests', __DIR__);
+$loader = require __DIR__.'/../app/autoload.php';
+$loader->add('App\\Tests', __DIR__);

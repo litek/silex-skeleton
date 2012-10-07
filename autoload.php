@@ -7,15 +7,15 @@ if (defined('BASE_PATH')) {
   throw new Exception('Autoloader should only be included once');
 }
 
-define('BASE_PATH', __DIR__.'/..');
-define('APP_PATH', __DIR__);
+define('BASE_PATH', __DIR__);
+define('APP_PATH', __DIR__.'/app');
 
 $env = getenv('APP_ENV') ?: 'development';
 putenv("APP_ENV=$env");
 
 // regular autoloader
 $loader = require BASE_PATH.'/vendor/autoload.php';
-$loader->add('App', APP_PATH.'/src');
+$loader->add('App', BASE_PATH.'/src');
 
 // APC autoloader cache
 if ($env == 'production') {

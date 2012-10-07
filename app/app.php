@@ -10,8 +10,14 @@ $app['config'] = array_replace_recursive(
 
 // view
 $app->register(new SilexPhpEngine\ViewServiceProvider, [
-  'view.paths' => APP_PATH.'/views/%name%.phtml'
+  'view.paths'  => APP_PATH.'/views/%name%.phtml',
+  'assets.root' => '/assets'
 ]);
+
+$app['view.helpers'] = $app->share(function() use($app) {
+  $assets = Parcel\AssetsHelper::create($app);
+  return [$assets];
+});
 
 // dbal
 $app->register(new Tabler\Provider\DbServiceProvider, [

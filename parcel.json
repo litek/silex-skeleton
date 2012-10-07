@@ -1,0 +1,8 @@
+{
+  "source": "assets",
+  "destination": "public/assets",
+  "bundles": {
+    "app.js": ["scripts/app.coffee"],
+    "app.css": ["styles/app.styl"]
+  }
+}
